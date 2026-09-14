@@ -1,0 +1,78 @@
+:root {
+  --warna-hijau: #2e7d32;
+  --warna-latar: #ffffff;
+  --warna-teks: #1a1a1a;
+}
+
+/* Level 2 — selector tag, class, id */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--warna-latar);
+  color: var(--warna-teks);
+}
+
+h1, h2 {
+  color: var(--warna-hijau);
+  font-size: 1.5rem; /* Level 8 — rem, bukan px */
+}
+
+h1 { font-size: 2rem; }
+
+.deskripsi {
+  font-size: 1rem;
+}
+
+#judul-utama {
+  text-align: center;
+}
+
+/* Level 3 & 4 — box model + border-box */
+.kotak {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 16px;
+  border: 2px solid var(--warna-hijau);
+  margin: 12px 0;
+  background-color: #f1f8f1;
+}
+
+/* Level 5 — anak langsung saja, bukan turunan */
+.daftar > li {
+  font-weight: bold;
+}
+
+/* Level 6 — hover & focus-visible */
+.tombol {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--warna-hijau);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.tombol:hover,
+.tombol:focus-visible {
+  background-color: #1b5e20;
+  outline: 2px solid #0d3d10;
+}
+
+/* Level 7 — kalahkan spesifisitas tanpa !important */
+p.pengumuman {
+  color: gray;
+  font-size: 1rem;
+}
+
+#pengumuman-utama {
+  color: #c62828;
+}
+
+/* Level 10 — dark mode, ubah persis 3 variabel */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --warna-hijau: #66bb6a;
+    --warna-latar: #121212;
+    --warna-teks: #e0e0e0;
+  }
+}
