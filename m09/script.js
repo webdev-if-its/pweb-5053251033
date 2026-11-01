@@ -130,9 +130,16 @@ export async function cariDanRender(kataKunci) {
 //   di setiap huruf. Tunggu sampai pengguna berhenti mengetik selama
 //   JEDA_DEBOUNCE, baru cari.
 export function pasangPencarianOnline() {
-  // tulis di sini
-}
+  const input = document.querySelector('#input-cari-online');
+  let timer;
 
+  input.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      cariDanRender(input.value);
+    }, JEDA_DEBOUNCE);
+  });
+}
 // -------------------------------------------------------------- BOOTSTRAP
 
 pasangPencarianOnline();
