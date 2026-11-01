@@ -103,7 +103,23 @@ let permintaanTerakhir = 0;
 //   hasilnya (baik sukses maupun gagal), periksa apakah nomor itu masih
 //   yang paling baru.
 export async function cariDanRender(kataKunci) {
-  // tulis di sini
+  const nomor = ++permintaanTerakhir;
+  const status = document.querySelector('#status-pencarian');
+
+  status.textContent = 'Memuat...';
+
+  try {
+    const data = await ambilBuku(kataKunci);
+    if (nomor !== permintaanTerakhir) return;
+
+    render(data);
+    status.textContent = data.length === 0 ? 'Tidak ada buku ditemukan.' : '';
+  } catch {
+    if (nomor !== permintaanTerakhir) return;
+
+    render([]);
+    status.textContent = 'Gagal memuat data. Coba lagi.';
+  }
 }
 
 // ------------------------------------------------------------- LEVEL 8–9
